@@ -1,8 +1,9 @@
-### 🔨Game project with pygame library
-#### project 1: avoid obstacle game
-#### project 2: divide ball game
-#### project 3: bubble pop game
----
+```python
+ 🔨Game project with pygame library
+    project 1: avoid obstacle game
+    project 2: divide ball game
+    project 3: bubble pop game
+```
 ## 알고리즘 및 게임 개발 기능 구현
 
 ### 1. 인접 객체 추적을 위한 깊이 우선 탐색 (DFS) 알고리즘 구현
@@ -73,5 +74,3 @@ while running:
 
 pygame.quit()
 ```
-
-이 문서에서는 DFS 알고리즘을 사용한 인접 객체 추적과 Pygame의 `sprite` 클래스를 활용한 이미지 스프라이트 관리 방법을 다룹니다. Python을 사용한 코드 예제가 포함되어 있습니다.
