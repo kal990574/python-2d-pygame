@@ -1,76 +1,37 @@
-```python
- 🔨Game project with pygame library
-    project 1: avoid obstacle game
-    project 2: divide ball game
-    project 3: bubble pop game
-```
-## 알고리즘 및 게임 개발 기능 구현
+# 🕹 Game Projects with Python & Pygame
 
-### 1. 인접 객체 추적을 위한 깊이 우선 탐색 (DFS) 알고리즘 구현
-깊이 우선 탐색(DFS) 알고리즘을 구현하여 그래프 또는 트리 구조에서 인접 객체를 효율적으로 추적합니다. 이 알고리즘은 재귀적 방식으로 구현될 수 있으며, 연결된 요소들을 탐색하는 데 유용합니다.
+## 프로젝트 목록
+| 프로젝트명 | 간단 설명 | 핵심 기능 |
+|------------|-----------|----------|
+| Avoid Obstacle Game | 장애물을 피하며 목표 지점에 도달하는 게임 | 플레이어 이동, 장애물 회피, 충돌 처리 |
+| Divide Ball Game | 공을 나누어 목표 지점에 보내는 퍼즐 게임 | 공 분할 로직, 레벨 디자인, 충돌 처리 |
+| Bubble Pop Game | 화면의 버블을 터뜨리는 캐주얼 게임 | 스프라이트 관리, 애니메이션, 점수 시스템 |
 
-```python
-def dfs(node, visited, adj):
-    visited.add(node)
-    print(f"Visited node {node}")
+---
 
-    for neighbor in adj[node]:
-        if neighbor not in visited:
-            dfs(neighbor, visited, adj)
+## 🔹 구현 기술 및 학습 내용
 
-# 그래프 예시: 각 노드가 연결된 노드를 리스트로 표현
-adjacency_list = {
-    0: [1, 2],
-    1: [0, 3, 4],
-    2: [0],
-    3: [1],
-    4: [1]
-}
+### 1. DFS(깊이 우선 탐색) 알고리즘
+- 그래프/트리 구조에서 인접 객체 탐색 구현  
+- 재귀적 DFS를 통해 연결된 요소를 효율적으로 순회  
+- 게임 내 장애물 추적, 레벨 탐색 등에 활용
 
-visited = set()
-dfs(0, visited, adjacency_list)
-```
+### 2. Pygame `sprite` 클래스 활용
+- 게임 객체의 이미지 및 애니메이션 관리를 위해 `sprite` 사용  
+- 충돌 처리 및 그룹 단위 업데이트 구현  
+- 스프라이트 그룹을 통한 효율적인 게임 루프 설계
 
-### 2. 이미지 스프라이트 관리를 위해 Pygame 내 `sprite` 클래스를 활용
-`Pygame`의 `sprite` 클래스를 활용하여 게임 내 이미지 스프라이트를 효율적으로 관리합니다. 이를 통해 게임 객체의 애니메이션, 충돌 처리 등을 손쉽게 구현할 수 있습니다.
+### 3. 게임 개발 핵심 경험
+- Pygame 환경 설정, 이벤트 루프 관리, 화면 렌더링  
+- 사용자 입력 처리 및 게임 로직 구현  
+- 객체 지향 설계 기반으로 확장 가능한 게임 구조 설계
 
-```python
-import pygame
+---
 
-# Pygame 초기화
-pygame.init()
+## 🔹 사용 기술
+- Python 3.x  
+- Pygame  
+- Git (버전 관리)  
 
-class Player(pygame.sprite.Sprite):
-    def __init__(self, image_path, position):
-        super().__init__()
-        self.image = pygame.image.load(image_path)
-        self.rect = self.image.get_rect()
-        self.rect.topleft = position
+---
 
-    def update(self):
-        # 스프라이트 업데이트 로직 (예: 움직임)
-        self.rect.x += 5
-
-# 스프라이트 그룹 생성
-all_sprites = pygame.sprite.Group()
-
-# 플레이어 스프라이트 생성 및 그룹에 추가
-player = Player("player.png", (100, 100))
-all_sprites.add(player)
-
-# 게임 루프 예시
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    all_sprites.update()
-
-    # 화면 그리기
-    screen.fill((0, 0, 0))
-    all_sprites.draw(screen)
-    pygame.display.flip()
-
-pygame.quit()
-```
